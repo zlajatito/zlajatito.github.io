@@ -16,19 +16,25 @@
   <meta name="msapplication-TileColor" content="#FFFFFF">
 </head>
 <body class="fullscreen">
-
-    <h1 class="title">PWA Snake</h1>
-    <div id="score">0</div>
     <div class="header">
-      <button id="restart" disabled>RESTART</button>
+        <div id="score">0</div>
+        <button id="restart" disabled>RESTART</button>
+    </div>
+    <div class="game">
+        <canvas id="snakeboard" width="300" height="500"></canvas>
     </div>
 
-    <canvas id="snakeboard" width="600" height="600"></canvas>
     <div class="buttons">
-      <button id="links">LINKS</button>
-      <button id="rechts">RECHTS</button>
-      <button id="oben">OBEN</button>
-      <button id="unten">UNTEN</button>
+        <div class="top">
+            <button id="oben">OBEN</button>
+        </div>
+        <div class="middle">
+            <button id="links">LINKS</button>
+            <button id="rechts">RECHTS</button>
+        </div>
+        <div class="bottom">
+            <button id="unten">UNTEN</button>
+        </div>
     </div>
 
   <script src="js/main.js"></script>

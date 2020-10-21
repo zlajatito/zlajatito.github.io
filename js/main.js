@@ -28,16 +28,16 @@ window.onload = () => {
     document.getElementById("score").textContent = '0';
     snake = [
       {x: 200, y: 200},
+      {x: 190, y: 200},
       {x: 180, y: 200},
+      {x: 170, y: 200},
       {x: 160, y: 200},
-      {x: 140, y: 200},
-      {x: 120, y: 200},
-      {x: 100, y: 200},
-      {x: 80, y: 200}
+      {x: 150, y: 200},
+      {x: 140, y: 200}
     ]
     score = 0;
     changing_direction = false;
-    dx = 20;
+    dx = 10;
     dy = 0;
     speed = 200;
     main();
@@ -110,8 +110,8 @@ window.onload = () => {
   function drawFood() {
     snakeboard_ctx.fillStyle = 'red';
     snakeboard_ctx.strokeStyle = 'darkgreen';
-    snakeboard_ctx.fillRect(food_x, food_y, 20, 20);
-    snakeboard_ctx.strokeRect(food_x, food_y, 20, 20);
+    snakeboard_ctx.fillRect(food_x, food_y, 10, 10);
+    snakeboard_ctx.strokeRect(food_x, food_y, 10, 10);
   }
 
   // Draw one snake part
@@ -123,9 +123,9 @@ window.onload = () => {
     snakeboard_ctx.strokeStyle = snake_border;
     // Draw a "filled" rectangle to represent the snake part at the coordinates
     // the part is located
-    snakeboard_ctx.fillRect(snakePart.x, snakePart.y, 20, 20);
+    snakeboard_ctx.fillRect(snakePart.x, snakePart.y, 10, 10);
     // Draw a border around the snake part
-    snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, 20, 20);
+    snakeboard_ctx.strokeRect(snakePart.x, snakePart.y, 10, 10);
   }
 
   function has_game_ended() {
@@ -133,21 +133,21 @@ window.onload = () => {
       if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) return true
     }
     const hitLeftWall = snake[0].x < 0;
-    const hitRightWall = snake[0].x > snakeboard.width - 20;
+    const hitRightWall = snake[0].x > snakeboard.width - 10;
     const hitToptWall = snake[0].y < 0;
-    const hitBottomWall = snake[0].y > snakeboard.height - 20;
+    const hitBottomWall = snake[0].y > snakeboard.height - 10;
     return hitLeftWall || hitRightWall || hitToptWall || hitBottomWall
   }
 
   function random_food(min, max) {
-    return Math.round((Math.random() * (max-min) + min) / 20) * 20;
+    return Math.round((Math.random() * (max-min) + min) / 10) * 10;
   }
 
   function gen_food() {
     // Generate a random number the food x-coordinate
-    food_x = random_food(0, snakeboard.width - 20);
+    food_x = random_food(0, snakeboard.width - 10);
     // Generate a random number for the food y-coordinate
-    food_y = random_food(0, snakeboard.height - 20);
+    food_y = random_food(0, snakeboard.height - 10);
     // if the new food location is where the snake currently is, generate a new food location
     snake.forEach(function has_snake_eaten_food(part) {
       const has_eaten = part.x == food_x && part.y == food_y;
@@ -166,25 +166,25 @@ window.onload = () => {
     if (changing_direction) return;
     changing_direction = true;
     const keyPressed = event.keyCode;
-    const goingUp = dy === -20;
-    const goingDown = dy === 20;
-    const goingRight = dx === 20;
-    const goingLeft = dx === -20;
+    const goingUp = dy === -10;
+    const goingDown = dy === 10;
+    const goingRight = dx === 10;
+    const goingLeft = dx === -10;
     if ((keyPressed === LEFT_KEY && !goingRight) || (button === 'links' && !goingRight)) {
-      dx = -20;
+      dx = -10;
       dy = 0;
     }
     if ((keyPressed === UP_KEY && !goingDown) || (button === 'oben' && !goingDown)) {
       dx = 0;
-      dy = -20;
+      dy = -10;
     }
     if ((keyPressed === RIGHT_KEY && !goingLeft) || (button === 'rechts' && !goingLeft)) {
-      dx = 20;
+      dx = 10;
       dy = 0;
     }
     if ((keyPressed === DOWN_KEY && !goingUp) || (button === 'unten' && !goingUp)) {
       dx = 0;
-      dy = 20;
+      dy = 10;
     }
   }
 
