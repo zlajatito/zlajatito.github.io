@@ -44,13 +44,14 @@ window.onload = () => {
     gen_food();
   }
 
-  init();
+  //init();
 
   const btnOben = document.getElementById("oben");
   const btnUnten = document.getElementById("unten");
   const btnRechts = document.getElementById("rechts");
   const btnLinks = document.getElementById("links");
   const btnRestart = document.getElementById("restart");
+  const btnStart = document.getElementById("start");
 
   btnOben.onclick = function(eo){
     change_direction(eo, 'oben');
@@ -66,6 +67,11 @@ window.onload = () => {
   };
   btnRestart.onclick = function (ea){
     init();
+    document.getElementById("overlayend").style.display = "none";
+  }
+  btnStart.onclick = function (es){
+    init();
+    document.getElementById("overlaystart").style.display = "none";
   }
 
   document.addEventListener("keydown", change_direction);
@@ -74,6 +80,7 @@ window.onload = () => {
   function main() {
 
     if (has_game_ended()) {
+      document.getElementById("overlayend").style.display = "block";
       btnRestart.disabled = false;
       return;
     }

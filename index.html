@@ -16,24 +16,29 @@
   <meta name="msapplication-TileColor" content="#FFFFFF">
 </head>
 <body class="fullscreen">
-    <div class="header">
-        <div id="score">0</div>
+    <div id="overlaystart" class="overlay">
+        <button id="start">START</button>
+    </div>
+    <div id="overlayend" class="overlay" style="display: none">
         <button id="restart" disabled>RESTART</button>
     </div>
+    <div class="header">
+        <div id="score">0</div>
+    </div>
     <div class="game">
-        <canvas id="snakeboard" width="300" height="500"></canvas>
+        <canvas id="snakeboard" width="300" height="400"></canvas>
     </div>
 
     <div class="buttons">
         <div class="top">
-            <button id="oben">OBEN</button>
+            <button id="oben"><i class="arrow up"></i></button>
         </div>
         <div class="middle">
-            <button id="links">LINKS</button>
-            <button id="rechts">RECHTS</button>
+            <button id="links"><i class="arrow left"></i></button>
+            <button id="rechts"><i class="arrow right"></i></button>
         </div>
         <div class="bottom">
-            <button id="unten">UNTEN</button>
+            <button id="unten"><i class="arrow down"></i></button>
         </div>
     </div>
 
